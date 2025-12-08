@@ -5,6 +5,8 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Base URL for GitHub Pages deployment
+  base: '/grab-it-now-site/',
   plugins: [
     vue(),
     vuetify({ autoImport: true }),
