@@ -43,7 +43,7 @@
             </div>
             
             <v-btn
-              href="https://wa.me/c/918981118301"
+              href="https://wa.me/918981118301?text=Hi!%20I%20would%20like%20to%20request%20delivery%20service%20in%20my%20area."
               target="_blank"
               block
               size="large"

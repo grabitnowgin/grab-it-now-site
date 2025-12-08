@@ -16,7 +16,7 @@
         <div class="footer-contact">
           <h4 class="footer-heading">Get in Touch</h4>
           <div class="contact-links">
-            <a href="https://wa.me/c/918981118301" target="_blank" class="contact-item">
+            <a href="https://wa.me/918981118301" target="_blank" class="contact-item">
               <v-icon size="20">mdi-whatsapp</v-icon>
               <span>WhatsApp Us</span>
             </a>
