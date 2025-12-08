@@ -79,20 +79,7 @@
 </template>
 
 <script setup>
-import { onMounted, onBeforeUnmount } from 'vue'
-import L from 'leaflet'
-import 'leaflet/dist/leaflet.css'
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png'
-import markerIcon from 'leaflet/dist/images/marker-icon.png'
-import markerShadow from 'leaflet/dist/images/marker-shadow.png'
-
-// Fix Leaflet default marker icon paths for Vite bundler
-delete L.Icon.Default.prototype._getIconUrl
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: markerIcon2x,
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-})
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 
 const serviceAreas = [
   { name: 'Prince Anwar Shah Road', coords: [22.5013, 88.365] },
@@ -105,18 +92,37 @@ const serviceAreas = [
 
 const serviceAreaNames = serviceAreas.map((area) => area.name)
 
-// Custom marker icon
-const customIcon = L.divIcon({
-  className: 'custom-marker',
-  html: `<div class="marker-pin"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" fill="#10B981"/><circle cx="12" cy="12" r="4" fill="white"/></svg></div>`,
-  iconSize: [24, 24],
-  iconAnchor: [12, 12],
-})
-
 let mapInstance = null
+let L = null
+const mapLoaded = ref(false)
 
-const initMap = () => {
-  if (mapInstance) return
+const initMap = async () => {
+  if (mapInstance || !document.getElementById('service-map')) return
+
+  // Dynamically import Leaflet only when needed
+  const leaflet = await import('leaflet')
+  await import('leaflet/dist/leaflet.css')
+  L = leaflet.default
+
+  // Fix Leaflet default marker icon paths
+  const markerIcon2x = (await import('leaflet/dist/images/marker-icon-2x.png')).default
+  const markerIcon = (await import('leaflet/dist/images/marker-icon.png')).default
+  const markerShadow = (await import('leaflet/dist/images/marker-shadow.png')).default
+  
+  delete L.Icon.Default.prototype._getIconUrl
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl: markerIcon2x,
+    iconUrl: markerIcon,
+    shadowUrl: markerShadow,
+  })
+
+  // Custom marker icon
+  const customIcon = L.divIcon({
+    className: 'custom-marker',
+    html: `<div class="marker-pin"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" fill="#10B981"/><circle cx="12" cy="12" r="4" fill="white"/></svg></div>`,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+  })
 
   mapInstance = L.map('service-map', { 
     zoomControl: false, 
@@ -157,16 +163,36 @@ const initMap = () => {
 
   L.control.zoom({ position: 'topright' }).addTo(mapInstance)
 
+  mapLoaded.value = true
+
   setTimeout(() => {
     mapInstance.invalidateSize()
   }, 200)
 }
 
+// Use Intersection Observer to lazy load map when visible
+let observer = null
+
 onMounted(() => {
-  initMap()
+  const mapEl = document.getElementById('service-map')
+  if (mapEl && 'IntersectionObserver' in window) {
+    observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        initMap()
+        observer.disconnect()
+      }
+    }, { rootMargin: '200px' })
+    observer.observe(mapEl)
+  } else {
+    // Fallback for browsers without IntersectionObserver
+    initMap()
+  }
 })
 
 onBeforeUnmount(() => {
+  if (observer) {
+    observer.disconnect()
+  }
   if (mapInstance) {
     mapInstance.remove()
     mapInstance = null

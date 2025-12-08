@@ -2,7 +2,10 @@
   <v-app-bar app elevation="0" class="app-header glass" height="72">
     <v-container class="d-flex align-center">
       <div class="logo-wrapper d-flex align-center">
-        <img src="/GIN.png" alt="GIN Logo" class="logo-icon" />
+        <picture>
+          <source srcset="/GIN.webp" type="image/webp" />
+          <img src="/GIN.png" alt="GIN Logo" class="logo-icon" loading="eager" />
+        </picture>
         <div class="ml-3">
           <span class="logo-text">GIN</span>
           <span class="logo-subtext d-none d-sm-inline">Grab it Now</span>

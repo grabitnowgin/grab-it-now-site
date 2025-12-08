@@ -5,6 +5,25 @@
     <link rel="icon" type="image/png" href="/GIN.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GIN (Grab it Now)</title>
+    <meta name="description" content="Your neighbourhood grocery partner in South Kolkata. Order via WhatsApp, get delivery in 60-90 minutes at MRP prices." />
+    
+    <!-- Preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preload critical font -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
+    
+    <!-- MDI Icons from CDN (cached globally) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7/css/materialdesignicons.min.css" />
+    
+    <!-- Critical CSS for instant FCP -->
+    <style>
+      body { margin: 0; background: #F8FAFC; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+      #app { min-height: 100vh; }
+      .hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, #D1FAE5 100%); }
+    </style>
   </head>
   <body>
     <div id="app"></div>

@@ -4,7 +4,10 @@
       <div class="footer-content">
         <div class="footer-brand">
           <div class="logo-wrapper d-flex align-center mb-4">
-            <img src="/GIN.png" alt="GIN Logo" class="logo-icon" />
+            <picture>
+              <source srcset="/GIN.webp" type="image/webp" />
+              <img src="/GIN.png" alt="GIN Logo" class="logo-icon" loading="lazy" />
+            </picture>
             <div class="ml-3">
               <span class="logo-text">GIN</span>
               <span class="logo-subtext">Grab it Now</span>

@@ -1,5 +1,5 @@
 /* Global styles - Modern Design System */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* Font loaded asynchronously in index.html for better performance */
 
 :root {
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
