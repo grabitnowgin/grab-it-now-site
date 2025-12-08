@@ -20,6 +20,10 @@
               :src="getLogoUrl(brand)"
               :alt="brand"
               :title="brand"
+              width="160"
+              height="70"
+              loading="lazy"
+              decoding="async"
               @error="(e) => handleImageError(e, brand)"
               class="brand-logo"
             />
@@ -35,40 +39,20 @@
 </template>
 
 <script setup>
-// Using logo.dev API which has better coverage for Indian brands
+// Using logo.dev API - reduced to 12 key brands for performance
 const brandLogos = {
-  'ITC Limited': 'https://img.logo.dev/itcportal.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Adani Wilmar': 'https://img.logo.dev/adaniwilmar.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Tata Consumer Products': 'https://img.logo.dev/tataconsum.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Colgate-Palmolive': 'https://img.logo.dev/colgate.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
   'Hindustan Unilever Limited': 'https://img.logo.dev/hul.co.in?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'GSK Consumer Healthcare India': 'https://img.logo.dev/gsk.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Dabur India': 'https://img.logo.dev/dabur.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Patanjali Ayurved': 'https://img.logo.dev/patanjaliayurved.net?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
   'Nestlé India Limited': 'https://img.logo.dev/nestle.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Hindustan Coca-Cola Beverages Pvt Ltd (HCCB)': 'https://img.logo.dev/coca-cola.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'PepsiCo India': 'https://img.logo.dev/pepsico.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Haldiram Snacks': 'https://img.logo.dev/haldirams.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
+  'ITC Limited': 'https://img.logo.dev/itcportal.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
   'Britannia Industries Limited': 'https://img.logo.dev/britannia.co.in?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Godrej Consumer Products Limited': 'https://img.logo.dev/godrej.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Reckitt Benckiser India': 'https://img.logo.dev/reckitt.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Kimberly-Clark India': 'https://img.logo.dev/kimberly-clark.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Procter & Gamble India': 'https://img.logo.dev/pg.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Johnson & Johnson India': 'https://img.logo.dev/jnj.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Mondelez Ltd.': 'https://img.logo.dev/mondelezinternational.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
+  'Dabur India': 'https://img.logo.dev/dabur.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
+  'Colgate-Palmolive': 'https://img.logo.dev/colgate.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
+  'PepsiCo India': 'https://img.logo.dev/pepsico.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
   'Parle Products': 'https://img.logo.dev/parleproducts.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Heinz': 'https://img.logo.dev/heinz.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Delmonte': 'https://img.logo.dev/delmonte.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  "L'Oréal India Pvt Ltd": 'https://img.logo.dev/loreal.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Himalaya Wellness Company': 'https://img.logo.dev/himalayawellness.in?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Nivea India Pvt Ltd': 'https://img.logo.dev/nivea.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  '3M': 'https://img.logo.dev/3m.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
+  'Godrej Consumer Products Limited': 'https://img.logo.dev/godrej.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
+  'Tata Consumer Products': 'https://img.logo.dev/tataconsum.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
   'Marico Ltd': 'https://img.logo.dev/marico.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Emami Ltd': 'https://img.logo.dev/emamiltd.in?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Wipro Consumer Care': 'https://img.logo.dev/wipro.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Bajaj Consumer Care Ltd': 'https://img.logo.dev/bajajconsumercare.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Nissin': 'https://img.logo.dev/nissin.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Reliance Retail Limited': 'https://img.logo.dev/relianceretail.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
+  'Himalaya Wellness Company': 'https://img.logo.dev/himalayawellness.in?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
 }
 
 // For brands without reliable logo URLs, we'll show stylized text chips
