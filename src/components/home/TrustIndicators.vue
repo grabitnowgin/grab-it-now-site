@@ -59,7 +59,10 @@ const trustItems = [
 @media (max-width: 768px) {
   .trust-bar {
     flex-direction: column;
+    align-items: flex-start;
     gap: 20px;
+    width: fit-content;
+    margin: 0 auto;
   }
 }
 </style>

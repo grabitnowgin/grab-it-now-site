@@ -46,6 +46,14 @@
       
       <v-divider class="my-8" color="rgba(255,255,255,0.1)"></v-divider>
       
+      <div class="footer-legal">
+        <p class="enterprise-name">A unit of M/S MAA KALI ENTERPRISE</p>
+        <p class="fssai-info">
+          <v-icon size="16" class="mr-1">mdi-certificate</v-icon>
+          FSSAI License No: 12825019001955
+        </p>
+      </div>
+      
       <div class="footer-bottom">
         <span class="copyright">&copy; {{ new Date().getFullYear() }} Grab it Now. All rights reserved.</span>
         <span class="made-with">Made with 💚 in Kolkata</span>
@@ -186,9 +194,37 @@
   font-size: 0.875rem;
 }
 
+.footer-legal {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.enterprise-name {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.fssai-info {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+}
+
 @media (max-width: 600px) {
   .footer-bottom {
     justify-content: center;
+  }
+  
+  .footer-legal {
+    margin-bottom: 20px;
+  }
+  
+  .enterprise-name,
+  .fssai-info {
+    font-size: 0.75rem;
   }
 }
 </style>
