@@ -12,14 +12,14 @@
     </v-container>
     
     <div class="marquee-wrapper">
-      <div class="marquee-fade marquee-fade-left"></div>
-      <div class="marquee-container">
+      <div class="marquee-fade marquee-fade-left" aria-hidden="true"></div>
+      <div class="marquee-container" role="list" aria-label="Brands we deliver">
         <div class="marquee-content">
-          <div v-for="(brand, index) in [...brandsWithLogos, ...brandsWithLogos]" :key="index" class="brand-card">
+          <div v-for="(brand, index) in [...brandsWithLogos, ...brandsWithLogos]" :key="index" class="brand-card" role="listitem">
             <img
               :src="getLogoUrl(brand)"
-              :alt="brand"
-              :title="brand"
+              :alt="`${brand} products available for delivery from GIN grocery`"
+              :title="`Order ${brand} products from GIN`"
               width="160"
               height="70"
               loading="lazy"
@@ -50,7 +50,7 @@ const brandLogos = {
   'PepsiCo India': 'https://img.logo.dev/pepsico.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
   'Parle Products': 'https://img.logo.dev/parleproducts.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
   'Godrej Consumer Products Limited': 'https://img.logo.dev/godrej.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
-  'Tata Consumer Products': 'https://img.logo.dev/tataconsum.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
+  'Tata Consumer Products': 'https://img.logo.dev/tataconsumer.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
   'Marico Ltd': 'https://img.logo.dev/marico.com?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
   'Himalaya Wellness Company': 'https://img.logo.dev/himalayawellness.in?token=pk_VAZ6tvAVQHCDwKeaNRVyjQ',
 }

@@ -1,5 +1,5 @@
 <template>
-  <section class="map-section py-16">
+  <section class="map-section py-16" aria-label="GIN Grocery Delivery Service Areas in South Kolkata">
     <v-container>
       <div class="section-header text-center mb-12">
         <v-chip color="primary" variant="tonal" size="small" class="mb-4">
@@ -12,32 +12,33 @@
       
       <v-row align="stretch">
         <v-col cols="12" lg="4">
-          <div class="info-panel">
+          <nav class="info-panel" aria-label="List of neighborhoods we deliver to">
             <div class="panel-header">
-              <div class="panel-icon">
+              <div class="panel-icon" aria-hidden="true">
                 <v-icon size="28" color="white">mdi-map-marker-multiple</v-icon>
               </div>
               <h3 class="panel-title">Active Neighbourhoods</h3>
             </div>
             
-            <div class="areas-grid">
-              <div 
+            <ul class="areas-grid" role="list">
+              <li 
                 v-for="area in serviceAreaNames" 
                 :key="area"
                 class="area-tag"
+                role="listitem"
               >
-                <v-icon size="16" color="primary">mdi-check-circle</v-icon>
+                <v-icon size="16" color="primary" aria-hidden="true">mdi-check-circle</v-icon>
                 <span>{{ area }}</span>
-              </div>
-            </div>
+              </li>
+            </ul>
             
             <div class="panel-alerts">
               <div class="alert-item success">
-                <v-icon size="20" color="success">mdi-clock-fast</v-icon>
+                <v-icon size="20" color="success" aria-hidden="true">mdi-clock-fast</v-icon>
                 <span>60–90 min delivery guaranteed in this zone</span>
               </div>
               <div class="alert-item info">
-                <v-icon size="20" color="info">mdi-message-question</v-icon>
+                <v-icon size="20" color="info" aria-hidden="true">mdi-message-question</v-icon>
                 <span>Want your area covered? WhatsApp us!</span>
               </div>
             </div>
@@ -48,15 +49,16 @@
               block
               size="large"
               class="request-btn mt-4"
+              aria-label="Request grocery delivery in your neighborhood via WhatsApp"
             >
               <v-icon start>mdi-whatsapp</v-icon>
               Request Your Area
             </v-btn>
-          </div>
+          </nav>
         </v-col>
         
         <v-col cols="12" lg="8">
-          <div class="map-container">
+          <div class="map-container" role="img" aria-label="Interactive map showing GIN delivery coverage areas in South Kolkata including Garia, Narendrapur, Baruipur, and Sonarpur">
             <div id="service-map" class="service-map"></div>
             <div class="map-overlay">
               <div class="map-legend">

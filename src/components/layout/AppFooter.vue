@@ -1,12 +1,12 @@
 <template>
-  <footer class="app-footer">
+  <footer class="app-footer" role="contentinfo" aria-label="GIN Grocery Delivery Footer">
     <v-container>
       <div class="footer-content">
         <div class="footer-brand">
           <div class="logo-wrapper d-flex align-center mb-4">
             <picture>
               <source srcset="/GIN.webp" type="image/webp" />
-              <img src="/GIN.png" alt="GIN Logo" class="logo-icon" loading="lazy" />
+              <img src="/GIN.png" alt="GIN - Grab It Now Grocery Delivery Logo" class="logo-icon" loading="lazy" width="48" height="48" />
             </picture>
             <div class="ml-3">
               <span class="logo-text">GIN</span>
@@ -14,29 +14,40 @@
             </div>
           </div>
           <p class="footer-tagline">Your neighbourhood grocery partner delivering happiness through WhatsApp.</p>
+          
+          <!-- Hidden text for SEO -->
+          <address class="visually-hidden" itemscope itemtype="https://schema.org/LocalBusiness">
+            <span itemprop="name">GIN - Grab It Now</span>
+            <span itemprop="description">Grocery delivery service in South Kolkata</span>
+            <span itemprop="telephone">+91 8981118301</span>
+            <span itemprop="email">grabitnow.gin@gmail.com</span>
+            <span itemprop="areaServed">South Kolkata, West Bengal, India</span>
+          </address>
         </div>
         
-        <div class="footer-contact">
+        <nav class="footer-contact" aria-label="Contact information">
           <h4 class="footer-heading">Get in Touch</h4>
           <div class="contact-links">
-            <a href="https://wa.me/918981118301" target="_blank" class="contact-item">
-              <v-icon size="20">mdi-whatsapp</v-icon>
+            <a href="https://wa.me/918981118301" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Contact GIN via WhatsApp">
+              <v-icon size="20" aria-hidden="true">mdi-whatsapp</v-icon>
               <span>WhatsApp Us</span>
             </a>
-            <a href="tel:8981118301" class="contact-item">
-              <v-icon size="20">mdi-phone</v-icon>
+            <a href="tel:8981118301" class="contact-item" aria-label="Call GIN at 8981118301">
+              <v-icon size="20" aria-hidden="true">mdi-phone</v-icon>
               <span>8981118301</span>
             </a>
           </div>
-        </div>
+        </nav>
         
         <div class="footer-cta">
           <h4 class="footer-heading">Ready to Order?</h4>
           <v-btn
             href="https://wa.me/c/918981118301"
             target="_blank"
+            rel="noopener noreferrer"
             class="cta-btn"
             size="large"
+            aria-label="Start shopping groceries on WhatsApp"
           >
             <v-icon start>mdi-whatsapp</v-icon>
             Start Shopping
@@ -49,14 +60,14 @@
       <div class="footer-legal">
         <p class="enterprise-name">A unit of M/S MAA KALI ENTERPRISE</p>
         <p class="fssai-info">
-          <v-icon size="16" class="mr-1">mdi-certificate</v-icon>
-          FSSAI License No: 12825019001955
+          <v-icon size="16" class="mr-1" aria-hidden="true">mdi-certificate</v-icon>
+          <abbr title="Food Safety and Standards Authority of India">FSSAI</abbr> License No: 12825019001955
         </p>
       </div>
       
       <div class="footer-bottom">
         <span class="copyright">&copy; {{ new Date().getFullYear() }} Grab it Now. All rights reserved.</span>
-        <span class="made-with">Made with 💚 in Kolkata</span>
+        <span class="made-with">Made with <span aria-label="love">💚</span> in Kolkata</span>
       </div>
     </v-container>
   </footer>
@@ -67,6 +78,18 @@
 </script>
 
 <style scoped>
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .app-footer {
   background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
   padding: 64px 0 32px;

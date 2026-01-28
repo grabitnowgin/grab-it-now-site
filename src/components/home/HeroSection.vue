@@ -1,6 +1,6 @@
 <template>
-  <section class="hero-section">
-    <div class="hero-bg"></div>
+  <section class="hero-section" aria-label="Welcome to GIN - Fast Grocery Delivery in South Kolkata">
+    <div class="hero-bg" aria-hidden="true"></div>
     <v-container class="hero-content">
       <v-row justify="center" align="center">
         <v-col cols="12" lg="10" xl="8" class="text-center">
@@ -17,16 +17,17 @@
           </h1>
           
           <p class="hero-subtitle mb-10">
-            Skip the apps. Just WhatsApp your list or send a voice note.<br class="d-none d-md-block">
+            Skip the apps. Just WhatsApp your list or send a voice note.<br class="d-none d-md-block" aria-hidden="true">
             We deliver within 60-90 minutes — like your friendly local store, but faster.
           </p>
           
-          <div class="hero-actions d-flex justify-center flex-wrap ga-4">
+          <div class="hero-actions d-flex justify-center flex-wrap ga-4" role="group" aria-label="Order options">
             <v-btn
               href="https://wa.me/c/918981118301"
               target="_blank"
               size="x-large"
               class="hero-btn-primary pulse-glow"
+              aria-label="Order groceries on WhatsApp"
             >
               <v-icon start>mdi-whatsapp</v-icon>
               Order on WhatsApp
@@ -36,16 +37,17 @@
               size="x-large"
               variant="outlined"
               class="hero-btn-secondary"
+              aria-label="Call us to place your order"
             >
               <v-icon start>mdi-phone-outline</v-icon>
               Call Us
             </v-btn>
           </div>
           
-          <div class="hero-trust mt-12">
+          <div class="hero-trust mt-12" role="list" aria-label="Our service highlights">
             <div class="trust-items d-flex justify-center flex-wrap ga-6">
-              <div class="trust-item">
-                <v-icon color="primary" size="20">mdi-clock-fast</v-icon>
+              <div class="trust-item" role="listitem">
+                <v-icon color="primary" size="20" aria-hidden="true">mdi-clock-fast</v-icon>
                 <span>60-90 min delivery</span>
               </div>
               <div class="trust-item">
