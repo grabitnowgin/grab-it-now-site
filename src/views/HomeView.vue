@@ -2,6 +2,7 @@
   <v-main>
     <HeroSection />
     <HowItWorks />
+    <PromoVideo />
     <UspSection />
     <BrandStory />
     <ServiceMap />
@@ -14,6 +15,7 @@
 <script setup>
 import HeroSection from '@/components/home/HeroSection.vue'
 import HowItWorks from '@/components/home/HowItWorks.vue'
+import PromoVideo from '@/components/home/PromoVideo.vue'
 import UspSection from '@/components/home/UspSection.vue'
 import BrandStory from '@/components/home/BrandStory.vue'
 import ServiceMap from '@/components/home/ServiceMap.vue'
